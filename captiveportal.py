@@ -1,3 +1,9 @@
+def checkid(): 
+	with open ('/etc/machine-id') as file:
+		line = file.readline().strip()
+		return line[-8:]
+		
+id = checkid() 
 def update_main_config_file(ssid, server_port):
 	if ssid != "":
 		os.system('sed -i \'s/LGTC-AP/' + ssid + '/\' /etc/zerofi/zerofi.conf')
