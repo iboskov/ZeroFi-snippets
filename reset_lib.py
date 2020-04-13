@@ -4,7 +4,7 @@ import urllib.request, urllib.error
 import time
 
 def config_file_hash():
-	config_file = open('/etc/zerofi/zerofi.conf')
+	config_file = open('/etc/Zerofi/Zerofi.conf')
 	config_hash = {}
 
 	for line in config_file:
@@ -25,7 +25,7 @@ def hostapd_reset_check(ssid_prefix):
 	return reset_required
 
 def update_hostapd(ssid_prefix):
-	os.system('cp -a /usr/lib/zerofi/reset_device/static_files/hostapd.conf /etc/hostapd/')
+	os.system('cp -a /usr/lib/Zerofi/reset_device/static_files/hostapd.conf /etc/hostapd/')
 
 	with fileinput.input("/etc/hostapd/hostapd.conf", inplace=True) as file:
 		for line in file:
@@ -47,10 +47,9 @@ def is_wifi_active():
 
 def reset_to_host_mode(): #reset the device in access point mode
 	os.system('rm -f /etc/wpa_supplicant/wpa_supplicant.conf')
-	os.system('rm /etc/cron.zerofi/apclient_bootstrapper')
-	os.system('cp /usr/lib/zerofi/reset_device/static_files/interfaces /etc/network/')
+	os.system('cp /usr/lib/Zerofi/reset_device/static_files/interfaces /etc/network/')
 	os.system('mv /etc/dnsmasq.conf /etc/dnsmasq.conf.original')
-	os.system('cp /usr/lib/zerofi/reset_device/static_files/dnsmasq.conf /etc/')
-	os.system('cp /usr/lib/zerofi/reset_device/static_files/resolv.conf /etc/')
-	os.system('touch /usr/lib/zerofi/APMODE')
+	os.system('cp /usr/lib/Zerofi/reset_device/static_files/dnsmasq.conf /etc/')
+	os.system('cp /usr/lib/Zerofi/reset_device/static_files/resolv.conf /etc/')
+	os.system('touch /usr/lib/Zerofi/APMODE')
 	os.system('reboot')
