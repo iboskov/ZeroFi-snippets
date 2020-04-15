@@ -1,4 +1,4 @@
-FILE="~/Zerofi/initialboot"
+FILE="/home/logatec/Zerofi/initialboot"
 #apt-get install python3 python3-pip dnsmasq hostapd -y
 #pip3 install flask pexpect
 if [ -e "$FILE" ];
